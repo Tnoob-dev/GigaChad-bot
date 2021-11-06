@@ -33,7 +33,7 @@ async def descargar(client, message: Message):
     msg = await message.reply_text(text="🔎Checking URL🔎", quote=True) #Check the URL before Download
     dwnlad = message.text #Link of the User
     photo = "https://telegra.ph/file/fad940fbefd120bd58200.png" #Photo of the archive, you can delet it if you don't want a photo in the archive, or just change it for other
-    pal = "Here you have" #The text who will be at the side of the archive when this is uploaded
+    pal = "😉Here you have😉" #The text who will be at the side of the archive when this is uploaded
     try:
         await msg.edit("⬇️Trying to Download the archive⬇️") #this will be edit "Checking URL" when he check the URL
         arch = wget.download(dwnlad)#Download the archive
