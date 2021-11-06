@@ -5,9 +5,9 @@ import os
 
 UploaderBot = Client(
     "UploaderBot",
-    bot_token ="2146516089:AAFnQXqcbpy1BSS7bts1qtS3-rJeMDj5mpY",
-    api_hash = "578d2817642f3aa3a283efaf49f4ef4e",
-    api_id = int(12845924)
+    bot_token ="TOKEN_FROM_BOTFATHER",
+    api_hash = "API hash from my.telegram.org",
+    api_id = "API ID from my.telegram.org" #int val (example(int(12345)))
 )
 
 
