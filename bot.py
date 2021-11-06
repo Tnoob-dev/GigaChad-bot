@@ -7,7 +7,7 @@ UploaderBot = Client(
     "UploaderBot",
     bot_token ="TOKEN_FROM_BOTFATHER",
     api_hash = "API hash from my.telegram.org",
-    api_id = "API ID from my.telegram.org" #int val (example(int(12345)))
+    api_id = "API ID from my.telegram.org" #int val (example: int(12345))
 )
 
 
