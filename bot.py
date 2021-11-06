@@ -1,30 +1,21 @@
-from typing import Text
-import pyrogram
-from logging import disable
-from urllib.parse import quote
-from config import Config
-from pyrogram import Client, client, filters 
-from pyrogram.methods.messages.search_global import Filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, input_message_content
-from pyrogram.types.messages_and_media.message import Message
+from pyrogram import Client, filters 
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 import wget
 import os
 
-INPUT_TEXT=0
-
-TestBot = Client(
-    "TestBot",
-    bot_token= "2026467093:AAEIvUg2_7jwJ-c43RhE6Qs8BQyUnAaq6cc",
-    api_hash= "ecc25f853a52ac2d84bf8f82fd239361",
-    api_id=int(11730118)
+UploaderBot = Client(
+    "Uploaderbot",
+    bot_token= "TOKEN_FROM_BOTFATHER", #example: 1234567890:ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    api_hash= "API Hash From my.telegram.org",
+    api_id= "API ID from my.telegram.org" #int valor (example:(int(12345)))
 )
 
 
-@TestBot.on_message(filters.command("start") & ~filters.edited)
+@UploaderBot.on_message(filters.command("start") & ~filters.edited)
 async def Start(filters, message):
     print(f"🤖The Bot was started by: {message.from_user.id}\n{message.from_user.username}\n") #In Spanish: "El bot ha sido comenzado por: "
     await message.reply_photo("https://telegra.ph/file/fad940fbefd120bd58200.png")
-    await message.reply_text(f"🙃User: {message.from_user.mention}\n🆔ID: {message.from_user.id}\n📛Username: @{message.from_user.username}\n\n🇬🇧Hi Human, I'm a **Uploader to Telegram bot**, i can upload files from some sites(Example: Uptodown.com, Malavida.com, etc..., just simple sites, in other actualizations will come the Clouds and Youtube), not at all, i can't upload from MEGA, Gdrive, OneDrive, etc...,Here you can see more info about my Creator😁👇\n\n\n🇪🇸Hola Humano, Sou un **Bot que suber archivos a Telegram**, puedo subir archivos directos desde varios sitios(Ejemplos: Uptodown.com, Malavida.com, etc..., solo sitios simples, en proximas actualizaciones podras descargar desde nubes y Youtube), no todos, no puedo subir desde MEGA, Gdrive, OneDrive, etc...,Aqui puedes ver mas info acerca de mi creador😁👇",
+    await message.reply_text(f"🙃User: {message.from_user.mention}\n🆔ID: {message.from_user.id}\n📛Username: @{message.from_user.username}\n\n🇬🇧Hi Human, I'm a **Uploader to Telegram bot**, i can upload files from some sites(Example: Uptodown.com, Malavida.com, etc..., just simple sites, in other actualizations will come the Clouds and Youtube), not at all, i can't upload from MEGA, Gdrive, OneDrive, etc...,Here you can see more info about my Creator😁👇\n\n\n🇪🇸Hola Humano, Soy un **Bot que sube archivos a Telegram**, puedo subir archivos directos desde varios sitios(Ejemplos: Uptodown.com, Malavida.com, etc..., solo sitios simples, en proximas actualizaciones podras descargar desde nubes y Youtube), no todos, no puedo subir desde MEGA, Gdrive, OneDrive, etc...,Aqui puedes ver mas info acerca de mi creador😁👇",
     
     reply_markup=InlineKeyboardMarkup([[
         InlineKeyboardButton("👾Github👾", url="https://www.github.com/Tnoob-dev"),
@@ -37,7 +28,7 @@ async def Start(filters, message):
     )
 
 
-@TestBot.on_message(filters.regex(pattern=".*http.*") & ~filters.edited) #the filters and that stuffs
+@UploaderBot.on_message(filters.regex(pattern=".*http.*") & ~filters.edited) #the filters and that stuffs
 async def descargar(client, message: Message):
     msg = await message.reply_text(text="🔎Checking URL🔎", quote=True) #Check the URL before Download
     dwnlad = message.text #Link of the User
@@ -57,10 +48,5 @@ async def descargar(client, message: Message):
     except Exception:
         await msg.edit("❌❌Link not supported❌❌")#This he will show if the link is invalid
         
-
-    
-
-
-
 print("Bot running")
-TestBot.run()
+UploaderBot.run()
