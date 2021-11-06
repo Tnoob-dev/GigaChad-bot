@@ -26,7 +26,10 @@ async def Start(filters, message):
     
     )
     )
-
+@UploaderBot.on_message(filters.command("help") & ~filters.edited)
+async def ayuda(filters, message):
+    await message.reply_photo("https://telegra.ph/file/a09ec751bdfd44711504a.png")
+    await message.reply_text("🇬🇧Just send me a link and i will try to download it\n\n🇪🇸Solo enviame un link y lo intentare descargar")
 
 @UploaderBot.on_message(filters.regex(pattern=".*http.*") & ~filters.edited) #the filters and that stuffs
 async def descargar(client, message: Message):
