@@ -1,13 +1,19 @@
-from pyrogram import Client, filters 
+from pyrogram import Client, filters
+import pyrogram 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 import wget
 import os
+import configparser
+import tgcrypto
+
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 UploaderBot = Client(
-    "UploaderBot",
-    bot_token ="TOKEN_FROM_BOTFATHER",
-    api_hash = "API hash from my.telegram.org",
-    api_id = "API ID from my.telegram.org" #int val (example: int(12345))
+    "Uploaderbot",
+    api_id = config.get('pyrogram', 'api_id'), #API_ID it's on the config.ini file
+    api_hash = config.get('pyrogram', 'api_hash'), #API_HASh it's on the config.ini file
+    bot_token = config.get('pyrogram', 'bot_token') #BOT_TOKEN it's on the config.ini file
 )
 
 
