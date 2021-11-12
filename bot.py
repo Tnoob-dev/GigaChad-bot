@@ -42,7 +42,7 @@ async def descargar(client, message: Message):
     msg = await message.reply_text(text="🔎Checking URL🔎", quote=True) #Check the URL before Download
     dwnlad = message.text #Link sended by the User
     photo = "https://telegra.ph/file/fad940fbefd120bd58200.png" #Photo of the archive, you can delet it if you don't want a photo in the archive, or just change it for other
-    pal = "😉Here you have😉" #The text who will be at the side of the archive when this is uploaded
+    pal = f"✅✅Upload Success✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe file was requested by: {message.from_user.mention}" #The text who will be at the side of the archive when this is uploaded
     try:
         await msg.edit("⬇️Trying to Download the archive⬇️") #this will be edit "Checking URL" when he check the URL
         filename = wget.download(dwnlad)#Download the archive
@@ -50,7 +50,6 @@ async def descargar(client, message: Message):
         pak = "fad940fbefd120bd58200.png" #Name + extension of the photo 
         await msg.edit("⬆️Uploading Archive⬆️")#this will be edit "Trying to Download Archive" when the archive is downloaded
         await message.reply_document(filename, thumb=pak, caption=pal) #Here we upload the archive
-        await msg.edit("✅✅Upload Success✅✅")#Delete the message when Upload the archive
         #Remove from server
         os.remove(filename)
         os.remove(photo_file)
