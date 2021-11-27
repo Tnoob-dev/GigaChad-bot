@@ -40,11 +40,6 @@ async def Start(filters, message):
 @UploaderBot.on_message(filters.command("help") & ~filters.edited)
 async def ayuda(filters, message):
     await message.reply_photo("https://telegra.ph/file/a09ec751bdfd44711504a.png")
-    await message.reply_text("🇬🇧Just send me a link and i will try to download it\n\n🇪🇸Solo enviame un link y lo intentare descargar")
-
-@UploaderBot.on_message(filters.command("help") & ~filters.edited)
-async def ayuda(filters, message):
-    await message.reply_photo("https://telegra.ph/file/a09ec751bdfd44711504a.png")
     await message.reply_text("🇬🇧Just send /download, later send me a link and i will download it\n\nNote: If you want to upload some other things and the bot don't recongnize him, you can go to @DirectLinkGeneratorbot, @DirectLinkGen_bot or @MaxFile2LinkBot.\n\n🇪🇸Solo enviame /download, luego enviame un link y lo descargare\n\n**Nota**: Si envias un enlace y el bot no lo reconoce, puedes enviar el enlace a @DirectLinkGeneratorbot, @DirectLinkGen_bot o @MaxFile2LinkBot.\n")
 
 
