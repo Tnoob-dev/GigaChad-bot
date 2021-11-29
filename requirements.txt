@@ -6,3 +6,4 @@ yt_dlp
 yarl
 pyshorteners
 qrcode
+pillow
