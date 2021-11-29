@@ -1,6 +1,8 @@
 pyrogram
 configparser
+asyncio
 tgcrypto
 yt_dlp
 yarl
-asyncio
+pyshorteners
+qrcode
