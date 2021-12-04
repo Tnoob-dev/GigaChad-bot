@@ -47,9 +47,8 @@ Conversation_state = {}
 
 @UploaderBot.on_message() #the filters and that stuffs
 async def msg_handler(client, message: Message):
-    tiempo_ahora = datetime.datetime.now()
     dwnlad = message.text #message sended by the User
-    pal = f"✅✅Upload Success✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe file was requested by: {message.from_user.id}\n\nThe file was requested at: {tiempo_ahora}" #The text who will be at the side of the archive when this is uploaded
+    pal = f"✅✅Upload Success✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe file was requested by: {message.from_user.id}" #The text who will be at the side of the archive when this is uploaded
     pal_qr = f"✅✅QR Generated✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe QR was requested by: {message.from_user.id}"
     who = message.from_user.id
     state = Conversation_state.get(who)
