@@ -2,22 +2,21 @@ import os
 from pyrogram import Client, filters
 import pyrogram
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-import configparser
 import asyncio
 import tgcrypto
 import yt_dlp
 from yarl import URL
 import pyshorteners
 import qrcode
+from config import Config
 
-config = configparser.ConfigParser()
-config.read("config.ini")
+
 
 UploaderBot = Client(
     "Uploaderbot",
-    api_id = config.get('pyrogram', 'api_id'),
-    api_hash = config.get('pyrogram', 'api_hash'),
-    bot_token = config.get('pyrogram', 'bot_token')
+    api_id = Config.API_ID,
+    api_hash = Config.API_HASH,
+    bot_token = Config.BOT_TOKEN
 )
 
 
@@ -47,9 +46,10 @@ Conversation_state = {}
 
 
 @UploaderBot.on_message() #the filters and that stuffs
-async def descargar(client, message: Message):
+async def msg_handler(client, message: Message):
+    tiempo_ahora = datetime.datetime.now()
     dwnlad = message.text #message sended by the User
-    pal = f"✅✅Upload Success✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe file was requested by: {message.from_user.id}" #The text who will be at the side of the archive when this is uploaded
+    pal = f"✅✅Upload Success✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe file was requested by: {message.from_user.id}\n\nThe file was requested at: {tiempo_ahora}" #The text who will be at the side of the archive when this is uploaded
     pal_qr = f"✅✅QR Generated✅✅\nUploaded By @Uploader_Tbot\nRemember GigaChad Loves u😘\nThe QR was requested by: {message.from_user.id}"
     who = message.from_user.id
     state = Conversation_state.get(who)
@@ -64,6 +64,7 @@ async def descargar(client, message: Message):
 
     if state == DOWNLOAD_LINK and URL(dwnlad).scheme and URL(dwnlad).host :
         del Conversation_state[who]
+        
         m = await message.reply_text("⬇️Downloading the archive⬇️")
         try:
             loop = asyncio.get_running_loop()
@@ -78,7 +79,6 @@ async def descargar(client, message: Message):
             await message.reply_document(fname, caption=pal)
         except Exception:
             await message.reply_text("❌Not a link supported❌")
-
 
         return
     QR = 1
@@ -108,9 +108,11 @@ async def descargar(client, message: Message):
         
         s = pyshorteners.Shortener()
 
-        short = s.clckru.short(dwnlad)
+        short_clckru = s.clckru.short(dwnlad)
+        short_dagd = s.dagd.short(dwnlad)
+        short_osdb = s.osdb.short(dwnlad)
 
-        await message.reply_text(short)
+        await message.reply_text("✅✅Here you have your link shorted:\n\n😆From Clck.ru: \n\n" + short_clckru + "\n\n🙃From Da.gd: \n\n" + short_dagd + "\n\n😁From Os.db: \n\n" + short_osdb + "\n\n\nThanks for use @Uploader_Tbot😊", disable_web_page_preview=True)
 
         return
 
@@ -121,7 +123,6 @@ class YT_DLP_LOGGER(object):
             pass
     def warning(self, msg):
             pass
-
 
 
 print("Bot running")
