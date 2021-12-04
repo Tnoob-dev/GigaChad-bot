@@ -14,9 +14,9 @@ from config import Config
 
 UploaderBot = Client(
     "Uploaderbot",
-    api_id = Config.API_ID,
-    api_hash = Config.API_HASH,
-    bot_token = Config.BOT_TOKEN
+    api_id = Config.API_ID, #API_ID you need to put it in the config.py file, you can obtain it in my.telegram.org
+    api_hash = Config.API_HASH, #API_HASJ you need to put it in the config.py file, the same process of the API_ID
+    bot_token = Config.BOT_TOKEN #BOT_TOKEN you need to put it in the config.py file, you can obtain a token from https://t.me/BotFather
 )
 
 
