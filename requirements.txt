@@ -7,3 +7,4 @@ yarl
 pyshorteners
 qrcode
 pillow
+aiohttp
