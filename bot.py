@@ -73,7 +73,7 @@ async def ayuda(filters, message):
 @GigaChad.on_callback_query(filters.regex('ingles_help'))
 async def help_query(client, callback_query):
     await callback_query.answer()
-    await callback_query.message.edit_text("Send /download and later send me the link, i will Download it and send you the file\n\nSend /qr and later a text and i will generate you a QR Code with the text\n\nSend /short and later send a link and i will short it\n\nSend \speedtest to do a quickly speedtest and watch the speed of Download/Upload\n\nNote: If you want to upload some other things and the bot don't recongnize him, you can go to @DirectLinkGeneratorbot, @DirectLinkGen_bot or @MaxFile2LinkBot.")
+    await callback_query.message.edit_text("Send /download and later send me the link, i will Download it and send you the file\n\nSend /qr and later a text and i will generate you a QR Code with the text\n\nSend /short and later send a link and i will short it\n\nSend /speedtest to do a quickly speedtest and watch the speed of Download/Upload\n\nNote: If you want to upload some other things and the bot don't recongnize him, you can go to @DirectLinkGeneratorbot, @DirectLinkGen_bot or @MaxFile2LinkBot.")
 
 
 @GigaChad.on_callback_query(filters.regex('close'))
