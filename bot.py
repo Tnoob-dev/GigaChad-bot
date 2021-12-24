@@ -159,7 +159,7 @@ async def msg_handler(client, message: Message):
         up_res = test.upload()
         down_res = test.download()
         ping_res = test.results.ping
-        await a.edit(f"```Subida: {up_res / 1024 / 1024:.2f} Mbit/s\nBajada: {down_res / 1024 / 1024:.2f} Mbit/s\nPing: {ping_res}```\n\n__Bot Hosted in:__ **Heroku❤️**")
+        await a.edit(f"```Subida: {up_res / 1024 / 1024 / 8:.2f} Mb/s\nBajada: {down_res / 1024 / 1024 / 8:.2f} Mb/s\nPing: {ping_res} ms```\n\n__Bot Hosted in:__ **Heroku❤️**")
 
     return
 class YT_DLP_LOGGER(object):
