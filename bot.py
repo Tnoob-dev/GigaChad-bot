@@ -27,7 +27,7 @@ GigaChad = Client(
 async def Start(filters, message):
     print(f"🤖The Bot was started by: {message.from_user.id}\n{message.from_user.username}\n") #In Spanish: "El bot ha sido comenzado por: "
     await message.reply_photo("https://telegra.ph/file/90aa09730e63d35357221.png")
-    await message.reply_text(f"🙃User: {message.from_user.mention}\n🆔ID: {message.from_user.id}\n📛Username: @{message.from_user.username}\n\nHola Humano, Soy un **Bot que sube archivos a Telegram, genera codigos QR y acorta enlaces**, puedo subir archivos directos desde varios sitios(Ejemplos: Uptodown.com, Malavida.com, Youtube.com, facebook.com,etc..., en proximas actualizaciones podras descargar desde MEGA, y vendran mas cosas increibles), Aqui puedes ver mas info acerca de mi creador😁👇",
+    await message.reply_text(f"🙃Usuario: {message.from_user.mention}\n🆔ID: {message.from_user.id}\n📛Nombre de Usuario: @{message.from_user.username}\n\nHola Humano, Soy un **Bot que sube archivos a Telegram, genera codigos QR y acorta enlaces**, puedo subir archivos directos desde varios sitios(Ejemplos: Uptodown.com, Malavida.com, Youtube.com, facebook.com,etc..., en proximas actualizaciones podras descargar desde MEGA, y vendran mas cosas increibles), Aqui puedes ver mas info acerca de mi creador😁👇",
     reply_markup=InlineKeyboardMarkup([[
         InlineKeyboardButton("👾Github👾", url="https://www.github.com/Tnoob-dev"),
         InlineKeyboardButton("🔝Repo🔝", url="https://github.com/Tnoob-dev/GigaChad-bot"),
@@ -38,16 +38,23 @@ async def Start(filters, message):
      InlineKeyboardButton("💻Grupo adjunto💻", url="https://t.me/S3SPGrupo")
     ],
     [InlineKeyboardButton("🇬🇧Text in English🇬🇧", callback_data='ingles_start')]
-    ]
-    
-    )
-    )
+    ]))
     await message.reply_text("**🇬🇧Note: Send /help to know what i can do\n\n🇪🇸Nota: Envia /help para conocer que puedo hacer**")
 
 @GigaChad.on_callback_query(filters.regex('ingles_start'))
 async def start_query(client, callback_query):
     await callback_query.answer()
-    await callback_query.message.edit_text("Hi Human, I'm a **Uploader to Telegram bot, i can generate QR Codes too, and short URLs**, i can upload files from some sites(Example: Uptodown.com, Malavida.com, Youtube.com, facebook.com,etc..., in other actualizations will come MEGA, and other amazing things), Here you can see more info about my Creator😁👇")
+    await callback_query.message.edit_text("Hi Human, I'm a **Uploader to Telegram bot, i can generate QR Codes too, and short URLs**, i can upload files from some sites(Example: Uptodown.com, Malavida.com, Youtube.com, facebook.com,etc..., in other actualizations will come MEGA, and other amazing things), Here you can see more info about my Creator😁👇",
+    
+    reply_markup=InlineKeyboardMarkup([[
+        InlineKeyboardButton("👾Github👾", url="https://www.github.com/Tnoob-dev"),
+        InlineKeyboardButton("🔝Repo🔝", url="https://github.com/Tnoob-dev/GigaChad-bot"),
+        InlineKeyboardButton("🐦Twitter🐦", url="https://twitter.com/TitiLM30")
+    ],
+    [InlineKeyboardButton("⌨️Interesting Channel⌨️", url="https://t.me/s3softwareyprogramacion"),
+
+     InlineKeyboardButton("💻attached group💻", url="https://t.me/S3SPGrupo")
+    ]]))
 
 
 
@@ -66,7 +73,7 @@ async def ayuda(filters, message):
 @GigaChad.on_callback_query(filters.regex('ingles_help'))
 async def help_query(client, callback_query):
     await callback_query.answer()
-    await callback_query.message.edit_text("Send /download and later send me the link, i will Download it and send you the file\n\nSend /qr and later a text and i will generate you a QR Code with the text\n\nSend \speedtest to do a quickly speedtest and watch the speed of Download/Upload\n\nSend /short and later send a link and i will short it\n\nNote: If you want to upload some other things and the bot don't recongnize him, you can go to @DirectLinkGeneratorbot, @DirectLinkGen_bot or @MaxFile2LinkBot.")
+    await callback_query.message.edit_text("Send /download and later send me the link, i will Download it and send you the file\n\nSend /qr and later a text and i will generate you a QR Code with the text\n\nSend /short and later send a link and i will short it\n\nSend \speedtest to do a quickly speedtest and watch the speed of Download/Upload\n\nNote: If you want to upload some other things and the bot don't recongnize him, you can go to @DirectLinkGeneratorbot, @DirectLinkGen_bot or @MaxFile2LinkBot.")
 
 
 @GigaChad.on_callback_query(filters.regex('close'))
@@ -151,24 +158,7 @@ async def msg_handler(client, message: Message):
         await GigaChad.send_chat_action(chat_id=chatid, action="typing")
         await message.reply_text("✅✅Here you have your link shorted:\n\n😆From Clck.ru: \n\n" + short_clckru + "\n\n🙃From Da.gd: \n\n" + short_dagd + "\n\n😁From Os.db: \n\n" + short_osdb + "\n\n\nThanks for use @Uploader_Tbot😊", disable_web_page_preview=True)
 
-    test = speedtest.Speedtest()
-    if message.text == "/speedtest":
-        a = await message.reply_text("**Generating speedTest...please wait this can take a moment**")
-        
-        
-        up_res = test.upload()
-        down_res = test.download()
-        ping_res = test.results.ping
-        await a.edit(f"```Subida: {up_res / 1024 / 1024 / 8:.2f} Mb/s\nBajada: {down_res / 1024 / 1024 / 8:.2f} Mb/s\nPing: {ping_res} ms```\n\n__Bot Hosted in:__ **Heroku❤️**")
-
-    return
-class YT_DLP_LOGGER(object):
-    def debug(self, msg):
-            pass
-    def error(self, msg):
-            pass
-    def warning(self, msg):
-            pass
+        return
 
 #Start the bot :)
 print("Bot running")
