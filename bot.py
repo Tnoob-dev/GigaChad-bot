@@ -159,6 +159,15 @@ async def msg_handler(client, message: Message):
         await message.reply_text("✅✅Here you have your link shorted:\n\n😆From Clck.ru: \n\n" + short_clckru + "\n\n🙃From Da.gd: \n\n" + short_dagd + "\n\n😁From Os.db: \n\n" + short_osdb + "\n\n\nThanks for use @Uploader_Tbot😊", disable_web_page_preview=True)
 
         return
+    test = speedtest.Speedtest()
+    if message.text == "/speedtest":
+        a = await message.reply_text("**Generating speedTest...please wait this can take a moment**")
+        
+        up_res = test.upload()
+        down_res = test.download()
+        ping_res = test.results.ping
+        await a.edit(f"```Subida: {up_res / 1024 / 1024 / 8:.2f} Mb/s\nBajada: {down_res / 1024 / 1024 / 8:.2f} Mb/s\nPing: {ping_res} ms```\n\n__Bot Hosted in:__ **Heroku❤️**")
+    return
 
 #Start the bot :)
 print("Bot running")
