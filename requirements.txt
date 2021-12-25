@@ -7,4 +7,4 @@ yarl
 pyshorteners
 qrcode
 pillow
-aiohttp
+speedtest-cli
